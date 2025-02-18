@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -20,4 +21,6 @@ public class Reservation implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date anneeUniversitaire;
     private boolean estvalide;
+    @ManyToMany
+    private Set<Etudiant> etudiants;
 }
