@@ -17,7 +17,7 @@ import java.util.Set;
 public class Foyer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idFoyer;
+    private long idFoyer;
     private String nomFoyer;
     private long capaciteFoyer;
     @OneToOne(mappedBy = "foyer")

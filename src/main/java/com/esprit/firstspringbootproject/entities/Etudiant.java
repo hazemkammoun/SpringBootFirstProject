@@ -18,7 +18,7 @@ import java.util.Set;
 public class Etudiant implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idEtudiant;
+    private long idEtudiant;
     private String nomEt;
     private String prenomEt;
     private long cin;
