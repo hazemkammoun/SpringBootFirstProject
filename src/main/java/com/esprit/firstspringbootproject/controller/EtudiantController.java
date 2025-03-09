@@ -13,8 +13,10 @@ import java.util.List;
 public class EtudiantController {
     IEtudiantService etudiantService;
         @PostMapping("addEtudiant")
-        public Etudiant addEtudiant(@RequestBody List<Etudiant> e){return (Etudiant) etudiantService.addEtudiants(e);}
-        @GetMapping("/getAll")
+        public Etudiant addEtudiant(@RequestBody Etudiant etudiant) {
+            return etudiantService.addEtudiants(List.of(etudiant)).get(0);
+        }
+    @GetMapping("/getAll")
     public List<Etudiant> getAll(){
         return etudiantService.retrieveAllEtudiants();
     }

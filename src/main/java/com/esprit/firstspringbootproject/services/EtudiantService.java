@@ -21,12 +21,7 @@ public class EtudiantService implements IEtudiantService{
 
     @Override
     public List<Etudiant> addEtudiants(List<Etudiant> etudiants) {
-      //  return etudiantRepository.saveAll(etudiants);
-        List<Etudiant> savedEtudiants = new ArrayList<>();
-        for (Etudiant etudiant : etudiants) {
-            savedEtudiants.add(etudiantRepository.save(etudiant));
-        }
-        return savedEtudiants;
+        return (List<Etudiant>) etudiantRepository.saveAll(etudiants);
     }
 
     @Override
