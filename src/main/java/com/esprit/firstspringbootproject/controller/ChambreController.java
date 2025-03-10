@@ -1,6 +1,5 @@
 package com.esprit.firstspringbootproject.controller;
 
-import com.esprit.firstspringbootproject.entities.Bloc;
 import com.esprit.firstspringbootproject.entities.Chambre;
 import com.esprit.firstspringbootproject.services.IChambreService;
 import lombok.AllArgsConstructor;
@@ -13,12 +12,17 @@ import java.util.List;
 @AllArgsConstructor
 public class ChambreController {
     IChambreService chambreService;
-    @PostMapping("addchambre")
-    public Chambre addChambre(@RequestBody Chambre c){return chambreService.addChambre(c);}
+
+    @PostMapping("/add")
+    public Chambre addChambre(@RequestBody Chambre c) {
+        return chambreService.addChambre(c);
+    }
+
     @GetMapping("/getAll")
-    public List<Chambre> getAll(){
+    public List<Chambre> getAll() {
         return chambreService.retrieveAllChambres();
     }
+
     @PutMapping("/{id}")
     public Chambre updateChambre(@PathVariable Long id, @RequestBody Chambre c) {
         return chambreService.updateChambre(c);
@@ -28,5 +32,4 @@ public class ChambreController {
     public Chambre retrieveChambre(@PathVariable Long id) {
         return chambreService.retrieveChambre(id);
     }
-
 }

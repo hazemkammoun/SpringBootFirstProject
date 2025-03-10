@@ -18,9 +18,15 @@ import java.util.Set;
 public class Reservation implements Serializable {
     @Id
     private String idReservation;
+
     @Temporal(TemporalType.DATE)
     private Date anneeUniversitaire;
+
     private boolean estvalide;
+
     @ManyToMany
     private Set<Etudiant> etudiants;
+
+    @ManyToOne
+    private Chambre chambre;
 }

@@ -19,10 +19,13 @@ public class Chambre implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idChambre;
     private long numeroChambre;
+
     @Enumerated(EnumType.STRING)
     private TypeChambre typeC;
+
     @ManyToOne
-    Bloc bloc;
-    @OneToMany
-    private Set<Reservation> Reservations;
+    private Bloc bloc;
+
+    @OneToMany(mappedBy = "chambre")
+    private Set<Reservation> reservations;
 }
