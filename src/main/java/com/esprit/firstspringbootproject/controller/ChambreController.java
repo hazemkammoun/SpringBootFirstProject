@@ -1,6 +1,7 @@
 package com.esprit.firstspringbootproject.controller;
 
 import com.esprit.firstspringbootproject.entities.Chambre;
+import com.esprit.firstspringbootproject.entities.TypeChambre;
 import com.esprit.firstspringbootproject.services.IChambreService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -31,5 +32,17 @@ public class ChambreController {
     @GetMapping("/{id}")
     public Chambre retrieveChambre(@PathVariable Long id) {
         return chambreService.retrieveChambre(id);
+    }
+    @GetMapping("/nonReservees")
+    public List<Chambre> getChambresNonReserveParNomUniversiteEtTypeChambre(
+            @RequestParam String nomUniversite,
+            @RequestParam TypeChambre type) {
+        return chambreService.getChambresNonReserveParNomUniversiteEtTypeChambre(nomUniversite, type);
+    }
+    @GetMapping("/parbloc-type")
+    public List<Chambre> getChambresParBlocEtType(
+            @RequestParam long idBloc,
+            @RequestParam TypeChambre typeC) {
+        return chambreService.getChambresParBlocEtType(idBloc, typeC);
     }
 }

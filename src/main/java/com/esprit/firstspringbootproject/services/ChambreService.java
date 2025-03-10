@@ -40,21 +40,20 @@ public class ChambreService implements IChambreService {
 
     @Override
     public List<Chambre> getChambresNonReserveParNomUniversiteEtTypeChambre(String nomUniversite, TypeChambre type) {
-        return chambreRepository.findChambresNonReservees(nomUniversite, type, LocalDate.now().getYear());
+        return chambreRepository.findChambresNonReservees(nomUniversite,type);
     }
 
     @Override
     public List<Reservation> getReservationParAnneeUniversitaireEtNomUniversite(Date anneeUniversitaire, String nomUniversite) {
-        return reservationRepository.findByAnneeUniversitaireAndChambre_Bloc_Universite_NomUniversite(anneeUniversitaire, nomUniversite);
+        return reservationRepository.findReservationsByAnneeUniversitaireAndNomUniversite(anneeUniversitaire, nomUniversite);
     }
 
     @Override
     public List<Chambre> getChambresParBlocEtType(long idBloc, TypeChambre typeC) {
-        return chambreRepository.findChambresParBlocEtTypeJPQL(idBloc, typeC);
+        return chambreRepository.findByBlocIdBlocAndTypeC(idBloc, typeC);
     }
-
     @Override
     public List<Chambre> getChambresParBlocEtTypeKeywords(long idBloc, TypeChambre typeC) {
-        return chambreRepository.findByBlocIdAndType(idBloc, typeC);
+        return chambreRepository.findByBlocIdBlocAndTypeC(idBloc, typeC);
     }
 }

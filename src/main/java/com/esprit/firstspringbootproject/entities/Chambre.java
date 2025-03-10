@@ -28,4 +28,7 @@ public class Chambre implements Serializable {
 
     @OneToMany(mappedBy = "chambre")
     private Set<Reservation> reservations;
+    public void setBloc(Bloc bloc) {
+        this.bloc = bloc;
+    }
 }

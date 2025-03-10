@@ -6,6 +6,7 @@ import com.esprit.firstspringbootproject.services.IReservationService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -26,5 +27,10 @@ public class ReservationController {
     public Reservation retrieveReservation(@PathVariable String id) {
         return reservationService.retrieveReservation(id);
     }
-
+    @GetMapping("/par-annee-universitaire-et-universite")
+    public List<Reservation> getReservationParAnneeUniversitaireEtNomUniversite(
+            @RequestParam Date anneeUniversitaire,
+            @RequestParam String nomUniversite) {
+        return reservationService.getReservationParAnneeUniversitaireEtNomUniversite(anneeUniversitaire, nomUniversite);
+    }
 }
