@@ -23,5 +23,5 @@ public class Bloc implements Serializable {
     @ManyToOne
     Foyer foyer;
     @OneToMany(mappedBy="bloc")
-    private Set<Chambre> Chambres;
+    private Set<Chambre> chambres;
 }

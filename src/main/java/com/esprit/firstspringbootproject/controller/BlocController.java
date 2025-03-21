@@ -1,6 +1,7 @@
 package com.esprit.firstspringbootproject.controller;
 
 import com.esprit.firstspringbootproject.entities.Bloc;
+import com.esprit.firstspringbootproject.entities.Universite;
 import com.esprit.firstspringbootproject.services.IBlocService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -34,4 +35,8 @@ public Bloc addBloc(@RequestBody Bloc b){return blocService.addBloc(b);}
         blocService.removeBloc(id);
     }
 
+    @PostMapping("/{idBloc}/affecter-chambres")
+    public Bloc affecterChambresABloc(@RequestBody List<Long> numChambres, @PathVariable long idBloc) {
+        return blocService.affecterChambresABloc(numChambres, idBloc);
+    }
 }

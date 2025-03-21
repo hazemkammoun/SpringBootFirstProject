@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -25,6 +27,6 @@ public class Etudiant implements Serializable {
     private String ecole;
     @Temporal(TemporalType.DATE)
     private Date dateNaissance;
-    @ManyToMany(mappedBy="etudiants")
-    private Set<Reservation> Reservations;
+    @ManyToMany
+    private List<Reservation> reservations = new ArrayList<>();
 }

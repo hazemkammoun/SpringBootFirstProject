@@ -4,6 +4,7 @@ import com.esprit.firstspringbootproject.entities.Bloc;
 import com.esprit.firstspringbootproject.entities.Foyer;
 import com.esprit.firstspringbootproject.services.IFoyerService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,4 +34,11 @@ public class FoyerController {
     public void removeBloc(@PathVariable Long id) {
        foyerService.removeFoyer(id);
     }
+    @PostMapping("/ajouter/{idUniversite}")
+    public ResponseEntity<Foyer> ajouterFoyerEtAffecterAUniversite(
+            @RequestBody Foyer foyer, @PathVariable long idUniversite) {
+        Foyer savedFoyer = foyerService.ajouterFoyerEtAffecterAUniversite(foyer, idUniversite);
+        return ResponseEntity.ok(savedFoyer);
+    }
+
 }

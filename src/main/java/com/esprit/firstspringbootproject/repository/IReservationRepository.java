@@ -1,5 +1,6 @@
 package com.esprit.firstspringbootproject.repository;
 
+import com.esprit.firstspringbootproject.entities.Chambre;
 import com.esprit.firstspringbootproject.entities.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,4 +17,6 @@ public interface IReservationRepository extends JpaRepository<Reservation, Strin
             "WHERE u.nomUniversite = :nomUniversite " +
             "AND FUNCTION('YEAR', r.anneeUniversitaire) = FUNCTION('YEAR', :anneeUniversitaire)")
     List<Reservation> findReservationsByAnneeUniversitaireAndNomUniversite(Date anneeUniversitaire, String nomUniversite);
+
+    long countByChambreAndEstValide(Chambre chambre, boolean b);
 }

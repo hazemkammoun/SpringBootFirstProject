@@ -4,6 +4,7 @@ import com.esprit.firstspringbootproject.entities.Etudiant;
 import com.esprit.firstspringbootproject.entities.Universite;
 import com.esprit.firstspringbootproject.services.IUniversiteService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,6 +28,13 @@ public class UniversiteController {
     public Universite retrieveUniversity(@PathVariable Long id) {
         return universiteService.retrieveUniversite(id);
     }
-
-
+    @PutMapping("/affecter-foyer/{idFoyer}/{nomUniversite}")
+    public Universite affecterFoyerAUniversite(@PathVariable long idFoyer, @PathVariable String nomUniversite) {
+        return universiteService.affecterFoyerAUniversite(idFoyer, nomUniversite);
+    }
+    @PostMapping("/desaffecter/{idUniversite}")
+    public ResponseEntity<Universite> desaffecterFoyerAUniversite(@PathVariable long idUniversite) {
+        Universite universite = universiteService.desaffecterFoyerAUniversite(idUniversite);
+        return ResponseEntity.ok(universite);
+    }
 }

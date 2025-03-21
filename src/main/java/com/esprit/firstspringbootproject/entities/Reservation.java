@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Getter
@@ -24,9 +23,14 @@ public class Reservation implements Serializable {
 
     private boolean estvalide;
 
-    @ManyToMany
-    private Set<Etudiant> etudiants;
+    @ManyToMany(mappedBy = "reservations")
+    private List<Etudiant> etudiants = new ArrayList<>();
 
     @ManyToOne
     private Chambre chambre;
+
+    public void addEtudiant(Etudiant etudiant) {
+        this.etudiants.add(etudiant);
+        etudiant.getReservations().add(this);
+    }
 }
