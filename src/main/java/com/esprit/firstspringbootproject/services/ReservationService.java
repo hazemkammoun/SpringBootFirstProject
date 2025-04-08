@@ -78,7 +78,7 @@ public class ReservationService implements IReservationService{
         Reservation reservation = new Reservation();
         reservation.setIdReservation(numReservation);
         reservation.setAnneeUniversitaire(anneeUniversitaireDate);
-        reservation.setEstvalide(true);
+        reservation.setEstValide(true);
         reservation.setChambre(chambre);
         reservation.addEtudiant(etudiant);
         return reservationRepository.save(reservation);

@@ -21,7 +21,7 @@ public class Reservation implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date anneeUniversitaire;
 
-    private boolean estvalide;
+    private boolean estValide;
 
     @ManyToMany(mappedBy = "reservations")
     private List<Etudiant> etudiants = new ArrayList<>();
@@ -31,6 +31,6 @@ public class Reservation implements Serializable {
 
     public void addEtudiant(Etudiant etudiant) {
         this.etudiants.add(etudiant);
-        etudiant.getReservations().add(this);
+      etudiant.getReservations().add(this);
     }
 }

@@ -18,5 +18,6 @@ public interface IReservationRepository extends JpaRepository<Reservation, Strin
             "AND FUNCTION('YEAR', r.anneeUniversitaire) = FUNCTION('YEAR', :anneeUniversitaire)")
     List<Reservation> findReservationsByAnneeUniversitaireAndNomUniversite(Date anneeUniversitaire, String nomUniversite);
 
-    long countByChambreAndEstValide(Chambre chambre, boolean b);
+   // long countByChambreAndEstValide(Chambre chambre, boolean b);
+   long countByChambreAndEstValide(Chambre chambre, boolean estValide);
 }
