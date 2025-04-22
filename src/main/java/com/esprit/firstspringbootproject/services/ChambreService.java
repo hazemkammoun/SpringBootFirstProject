@@ -5,12 +5,14 @@ import com.esprit.firstspringbootproject.entities.Reservation;
 import com.esprit.firstspringbootproject.entities.TypeChambre;
 import com.esprit.firstspringbootproject.repository.IChambreRepository;
 import com.esprit.firstspringbootproject.repository.IReservationRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -30,7 +32,23 @@ public class ChambreService implements IChambreService {
 
     @Override
     public Chambre updateChambre(Chambre c) {
-        return chambreRepository.save(c);
+        // Check if the Chambre exists in the database
+        Optional<Chambre> existingChambreOptional = chambreRepository.findById(c.getIdChambre());
+
+        if (existingChambreOptional.isPresent()) {
+            Chambre existingChambre = existingChambreOptional.get();
+
+            // Update the fields of the existing Chambre with the new values
+            existingChambre.setNumeroChambre(c.getNumeroChambre());
+            existingChambre.setTypeC(c.getTypeC());
+            existingChambre.setBloc(c.getBloc());
+
+            // Save the updated Chambre back to the database
+            return chambreRepository.save(existingChambre);
+        } else {
+            // Handle the case where the Chambre does not exist
+            throw new EntityNotFoundException("Chambre with ID " + c.getIdChambre() + " not found.");
+        }
     }
 
     @Override
